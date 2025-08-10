@@ -8,6 +8,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Product } from './products/entities/product.entity';
 import { Category } from './category/entities/category.entity';
+import { CategoryModule } from './category/category.module';
 
 @Module({
   imports: [
@@ -30,7 +31,7 @@ import { Category } from './category/entities/category.entity';
       })
     }),
   
-    UsersModule , ProductsModule , ReviewsModule],
+    UsersModule , ProductsModule , CategoryModule, ReviewsModule],
 })
 
 

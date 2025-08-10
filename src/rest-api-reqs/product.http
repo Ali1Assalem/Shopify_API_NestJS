@@ -3,12 +3,13 @@ POST http://localhost:5000/product
 Content-Type: application/json
 
 {
-  "name": "iPhone 15",
+  "name": "Xiaomi",
   "description": "Latest Apple phone",
   "price": 999.99,
-  "stock": 25
+  "stock": 25,
+  "categoryId" : 4
 }
 
 ### get Products
-GET http://localhost:5000/product?sort=-name&categoryId=1&productName=iPho
+GET http://localhost:5000/product?sort=-id&categoryId=1&productName=iPho
 Content-Type: application/json
