@@ -1,0 +1,14 @@
+### Create Product
+POST http://localhost:5000/product
+Content-Type: application/json
+
+{
+  "name": "iPhone 15",
+  "description": "Latest Apple phone",
+  "price": 999.99,
+  "stock": 25
+}
+
+### get Products
+GET http://localhost:5000/product?sort=-name&categoryId=1&productName=iPho
+Content-Type: application/json
