@@ -2,9 +2,11 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { CreateProductDto } from "./dto/create-product.dto";
 import { Product } from "./entities/product.entity";
 import { Repository } from "typeorm";
-import { Injectable, NotFoundException } from "@nestjs/common";
+import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
 import { Category } from "src/category/entities/category.entity";
 import { CategoryService } from "src/category/category.service";
+import { UpdateProductDto } from "./dto/update-product.dto";
+import { UpdateProductStockDto } from "./dto/update-product-stock.dto";
 
 @Injectable()
 export class ProductService{
@@ -59,4 +61,53 @@ export class ProductService{
         return await queryBuilder.getMany()
     }
 
+    async findOne(id:number){
+        const product = await this.productRepository.findOne({
+            where: {id},
+            relations:['category']
+        })
+        if(!product){
+            throw new NotFoundException(`Product with ID ${id} not found`);
+        }
+        return product
+    }
+
+
+    async update(
+        id : number ,
+        updateProductDto:UpdateProductDto
+    ){
+        const product = await this.findOne(id)
+        if(updateProductDto.categoryId){
+            const category = await this.categoryService.findOne(updateProductDto.categoryId)
+            product.category = category
+        }
+
+        Object.assign(product,updateProductDto)
+        return await this.productRepository.save(product)
+    }
+
+    async remove(id:number){
+        const product = await this.findOne(id)
+        await this.productRepository.remove(product)
+        console.log(this.reduceStock(2,3))
+    }
+
+    async reduceStock(productId:number,quantiy:number){
+        const product = await this.findOne(productId)
+        if(product.stock < quantiy){
+            throw new BadRequestException(`Not enough stock for product: ${product.name}`)
+        }
+        product.stock -= quantiy
+        return await this.productRepository.save(product)
+    }
+
+    async updateStock(productId:number,UpdateProductStockDto:UpdateProductStockDto){
+        const product = await this.findOne(productId)
+        
+        product.stock = UpdateProductStockDto.stock
+        return await this.productRepository.save(product)
+    }
+
+    
 }

@@ -12,4 +12,16 @@ Content-Type: application/json
 
 ### get Products
 GET http://localhost:5000/product?sort=-id&categoryId=1&productName=iPho
+
+
+### get Product
+GET http://localhost:5000/product/17
+
+
+### Update Product
+PATCH  http://localhost:5000/product/17
 Content-Type: application/json
+
+{
+  "name": "Xiaomi1"
+  }
