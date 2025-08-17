@@ -1,0 +1,29 @@
+### Create Category
+POST http://localhost:5000/category
+Content-Type: application/json
+
+{
+  "name": "Home",
+  "description": "Home Category "
+}
+
+### get Categories
+GET http://localhost:5000/category
+
+
+### get Category
+GET http://localhost:5000/category/2
+
+
+### update Category
+PATCH http://localhost:5000/category/3
+Content-Type: application/json
+
+{
+  "name": "New Category Name",
+  "description": "Updated description here"
+}
+
+
+### delete Category
+DELETE  http://localhost:5000/category/5
