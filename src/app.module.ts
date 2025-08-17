@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersModule } from './users/users.module';
+import { UserModule } from './user/user.module';
 import { ProductsModule } from './products/products.module';
 import { ReviewsModule } from './reviews/reviews.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -9,6 +9,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Product } from './products/entities/product.entity';
 import { Category } from './category/entities/category.entity';
 import { CategoryModule } from './category/category.module';
+import { AuthModule } from './auth/auth.module';
+import { User } from './user/entities/user.entity';
 
 @Module({
   imports: [
@@ -25,13 +27,13 @@ import { CategoryModule } from './category/category.module';
         username: config.get<string>('DB_USERNAME'),
         password: config.get<string>('DB_PASSWORD'),
         database: config.get<string>('DB_DATABASE'),
-        entities: [Product , Category],
+        entities: [Product , Category , User],
         synchronize: true,
         logging: true,
       })
     }),
   
-    UsersModule , ProductsModule , CategoryModule, ReviewsModule],
+    AuthModule ,UserModule , ProductsModule , CategoryModule, ReviewsModule],
 })
 
 

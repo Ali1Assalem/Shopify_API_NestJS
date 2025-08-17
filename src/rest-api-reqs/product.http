@@ -23,5 +23,23 @@ PATCH  http://localhost:5000/product/17
 Content-Type: application/json
 
 {
-  "name": "Xiaomi1"
-  }
+  "name": "Xiaomi1",
+  "categoryId" : 1
+}
+
+### Update Product Stock
+PATCH  http://localhost:5000/product/17/stock
+Content-Type: application/json
+
+{
+  "stock": 22
+}
+
+### Delete Product
+DELETE  http://localhost:5000/product/8
+Content-Type: application/json
+
+{
+  "name": "Xiaomi1",
+  "categoryId" : 1
+}
