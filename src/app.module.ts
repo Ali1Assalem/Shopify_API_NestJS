@@ -11,6 +11,7 @@ import { Category } from './category/entities/category.entity';
 import { CategoryModule } from './category/category.module';
 import { AuthModule } from './auth/auth.module';
 import { User } from './user/entities/user.entity';
+import { Cart } from './cart/entities/cart.entity';
 
 @Module({
   imports: [
@@ -27,7 +28,7 @@ import { User } from './user/entities/user.entity';
         username: config.get<string>('DB_USERNAME'),
         password: config.get<string>('DB_PASSWORD'),
         database: config.get<string>('DB_DATABASE'),
-        entities: [Product , Category , User],
+        entities: [Product , Category , User , Cart],
         synchronize: true,
         logging: true,
       })
