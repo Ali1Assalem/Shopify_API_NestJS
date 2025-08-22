@@ -1,0 +1,31 @@
+### Add To Cart
+POST http://localhost:5000/cart/add
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaTFhc3NhbGVtQGdtYWlsLmNvbSIsImlkIjoxLCJpYXQiOjE3NTU4OTg2NzAsImV4cCI6MTc1ODQ5MDY3MH0.DR8F0ZLHSDz0OJkJLD35VduDLkyOx2sH_JNTK-29eu1xCtEqKTrcbtufjx16nFZGtJZHxFl-kDUDWKGfNMZU9Q
+
+{
+  "productId": 16
+}
+
+### Get User Cart
+GET http://localhost:5000/cart
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaTFhc3NhbGVtQGdtYWlsLmNvbSIsImlkIjoxLCJpYXQiOjE3NTU4OTg2NzAsImV4cCI6MTc1ODQ5MDY3MH0.DR8F0ZLHSDz0OJkJLD35VduDLkyOx2sH_JNTK-29eu1xCtEqKTrcbtufjx16nFZGtJZHxFl-kDUDWKGfNMZU9Q
+
+### Update Cart Item 
+PATCH  http://localhost:5000/cart/update
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaTFhc3NhbGVtQGdtYWlsLmNvbSIsImlkIjoxLCJpYXQiOjE3NTU4OTg2NzAsImV4cCI6MTc1ODQ5MDY3MH0.DR8F0ZLHSDz0OJkJLD35VduDLkyOx2sH_JNTK-29eu1xCtEqKTrcbtufjx16nFZGtJZHxFl-kDUDWKGfNMZU9Q
+
+{
+  "productId": 16,
+  "quantity" : 8
+}
+
+### Remove Cart Item 
+DELETE   http://localhost:5000/cart/remove
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaTFhc3NhbGVtQGdtYWlsLmNvbSIsImlkIjoxLCJpYXQiOjE3NTU4OTg2NzAsImV4cCI6MTc1ODQ5MDY3MH0.DR8F0ZLHSDz0OJkJLD35VduDLkyOx2sH_JNTK-29eu1xCtEqKTrcbtufjx16nFZGtJZHxFl-kDUDWKGfNMZU9Q
+
+{
+  "productId": 16
+}
